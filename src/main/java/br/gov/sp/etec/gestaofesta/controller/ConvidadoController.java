@@ -64,7 +64,6 @@ public class ConvidadoController {
 		repo.deleteById(id);
 		
 		List<Convidado> listaConvidados = repo.findAll();
-		
 		ModelAndView view = new ModelAndView("lista-convidado");
 		
 		view.addObject("convidados", listaConvidados);
@@ -74,5 +73,14 @@ public class ConvidadoController {
 		
 	}
 	
+	
+	@GetMapping("editar/{id}")
+	public ModelAndView editar(@PathVariable Long id) {
+		Convidado c = repo.findById(id).get();
+		ModelAndView view = new ModelAndView("editar");
+		view.addObject("convidado", c);
+		return view;
+		
+	}
 
 }
